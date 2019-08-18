@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions">
+        <h:outputScript>
+  
+     
+     
+   function skinPie() {
+    this.cfg.seriesColors = ['#00c081', '#ffff00','#ff002b'];    
+    this.cfg.grid = {
+        background: '#00243e',      
+        shadow: true,
+        drawGridlines: false,
+        drawBorder: false,
+       
+        
+    };
+    this.cfg.seriesDefaults.shadow = true;
+}
+  </h:outputScript>
+      <h3 style="color: #00c081; "> Summary of #{endPointsAttributes.dpTypeToShow.toUpperCase()} : Deployed on #{endPointsAttributes.dpDateToShow} at #{endPointsAttributes.dpTimeToShow} and Total Deployment Time is #{pieChartBean.timeTakenToShow} </h3>
+<h:form style=" border: 1px solid #00c081;">	
+    <h:head>
+        <title>Deployment Status</title> 
+        <style>               
+               
+      </style>       
+    </h:head>
+  
+   <h:body style="margin:50px;"> 
+  
+  <p:chart type="pie"
+                 responsive="true" id="pieChart"
+                 model="#{pieChartBean.model}" dataFormat="value" style="background-color: #003258 !important;" >
+         <p:ajax event="itemSelect" listener="#{pieChartBean.itemSelect}" oncomplete="fnc()" /> 
+            
+          </p:chart>
+          <div >
+           <p:outputLabel value="Total End Points: #{pieChartBean.totalEndpoints}" style="color:white;font-size: 14px !important;" />
+            <p:outputLabel value=" |Pass: #{pieChartBean.passed}" style="color:#00c081;font-size: 14px !important;" />
+             <p:outputLabel value=" |Fail: #{pieChartBean.failed}|" style="color:#ffff00;font-size: 14px !important;" />
+             <p:outputLabel value=" No Response: #{pieChartBean.noResp}|" style="color:#ff002b;font-size: 14px !important;" />
+   </div>
+  
+			
+   
+           
+ <p:remoteCommand name="fnc" actionListener="#{pieChartBean.showDataTable}"/> 
+</h:body>
+</h:form>
+</html>
+

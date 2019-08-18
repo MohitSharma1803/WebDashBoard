@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+>
+<h:head>
+</h:head>
+<h:body>
+    <h2>PrimeFaces - Ajax ProgressBar Example</h2>
+    <h:form>
+
+        <p:commandButton value="Perform long Task"
+                         actionListener="#{taskView.startTask}"
+                         onclick="jsStartTask()"
+                         update="taskResult"
+                         widgetVar="taskButton"/>
+        <br/><br/>
+        <p:progressBar  widgetVar="progressBar"
+                        ajax="true"
+                        interval="500"
+                        value="#{taskView.progress}"
+                        labelTemplate="{value}%"
+                        global="false"
+                        style="width:500px">
+
+            <p:ajax event="complete"
+                    update="taskResult"
+                    oncomplete="jsOnComplete()"/>
+
+        </p:progressBar>
+        <h:outputText id="taskResult" value="#{taskView.result}"/>
+    </h:form>
+
+    <script type="text/javascript">
+    function jsOnComplete() {
+        PF('taskButton').enable();
+    }
+
+    function jsStartTask() {
+      PF('taskButton').disable();
+      PF('progressBar').cancel();
+      PF('progressBar').setValue(0);
+      PF('progressBar').start();
+    }
+ </script>
+</h:body>
+</html>

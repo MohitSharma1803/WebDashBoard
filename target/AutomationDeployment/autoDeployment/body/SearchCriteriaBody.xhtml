@@ -1,0 +1,149 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" 
+"http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://java.sun.com/jsf/core"      
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:fn="http://java.sun.com/jsp/jstl/functions"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+     
+       <h:outputScript>      
+//<![CDATA[
+     function processDay(date) {
+     
+         var specialDays = new Array(#{fn:join(calenderBean.getSpecialDays(), ',')});  
+         //alert(specialDays);       
+         for (var i = 0; i < specialDays.length; i++) {
+             var sDate = new Date(specialDays[i]);
+            
+             var compare1 = new Date(date.getFullYear(),date.getMonth(),date.getDate());
+             var compare2 = new Date(sDate.getFullYear(),sDate.getMonth(),sDate.getDate());
+             
+             if(compare1.getTime() == compare2.getTime()) {
+                 return [true, ''];
+             }
+         }
+         
+         return [false, ''];
+     };
+  //]]>
+   
+   function skinPie() {
+    this.cfg.seriesColors = ['#00c081', '#ffff00','#ff002b'];    
+    this.cfg.grid = {
+        background: '#00243e',      
+        shadow: true,
+        drawGridlines: false,
+        drawBorder: false,
+       
+        
+    };
+    this.cfg.seriesDefaults.shadow = true;
+}
+  </h:outputScript>
+  <h:body>
+<!-- <h:form style="border: 1px solid #00c081;">	 -->
+<f:view>
+<h:form id="searchForm">	
+
+    <h:head>
+    <style> 
+    
+   /*  .customTitleBar > .ui-panel-titlebar {
+    background: #5050F0;
+    color:white;
+    }    */           
+             
+      </style> 
+    </h:head>
+ 
+<!-- <p:panel header="Select the Category" style="margin:10px;" styleClass="customTitleBar" > -->
+<p:panel style="border: 1px solid #00c081; background:#003258;" >
+
+
+   <p:panelGrid  columns="8"  styleClass="searchPanel" columnClasses="dt1,dt1" style="align:right; background: #003258; "> 
+   
+   <p:outputLabel for="deployment" value="Deployment Type: " style="font-weight:bold; color:white; "/>
+    <p:selectOneMenu id="deployment" value="#{pieChartBean.deploymentType}"  onchange="submit()"  style="width:200px ; background-color: #00243e !important;">
+    <f:valueChangeListener type="com.loblaw.listener.DeploymentTypeListener" />
+    <f:selectItem itemLabel="Select One" itemValue="a"/>
+    <f:selectItems value="#{pieChartBean.dropDownList}"   />  
+   <!--  <f:ajax render=":searchForm:calendersDp" /> -->   
+    <p:ajax event="itemSelect"  update=":searchForm:calendersDp" />  
+    </p:selectOneMenu>
+   
+  
+    
+    <p:outputLabel for="calendersDp" value="Deployment Date:" style="font-weight:bold;color:white;" />
+     <p:calendar id="calendersDp" value="#{pieChartBean.deploymentDate}"   beforeShowDay="processDay" showOn="button"  style="align:right;" >
+     
+     <p:ajax event="dateSelect" listener="#{pieChartBean.dateChange}" update=":searchForm:dpTime" />    
+     </p:calendar>
+     
+     
+      <p:outputLabel  value="Deployment Time(HH:MM:SS): " style="font-weight:bold; color:white; " />
+     
+     <p:selectOneMenu id="dpTime" value="#{pieChartBean.selectedDpTime}"  style="width:200px ; background-color: #00243e !important;" >  
+     <f:selectItem itemLabel="Select Time" />  
+    <f:selectItems value="#{pieChartBean.deploymentTimeList}"   />      
+    </p:selectOneMenu>
+     
+    <!--  <p:outputLabel for="deploymentTime" value="Deployment Time:" style="font-weight:bold;color:white;" />
+     <p:selectOneMenu id="deploymentTime" value="#{pieChartBean.deploymentType}"  style="width:200px ; background-color: #00243e !important;">
+    <f:selectItem itemLabel="Select One" />
+    <f:selectItems value="#{pieChartBean.dropDownList}"   />     
+    <p:ajax event="itemSelect"  listener="#{pieChartBean.deploymentTypeListener}" />  
+    </p:selectOneMenu> -->
+     
+     
+    <!--  <h:commandLink  style="padding-bottom: 20px;" action="#{pieChartBean.onSubmit}" >
+					<f:setPropertyActionListener target="#{exceptionControllerBean.searchPage}" value="1" />
+					<h:graphicImage  library="images" name="search-button_green.jpg" 
+						alt="search" width="50" height="50" style="margin-left:2px;"
+						onmouseover="this.style.opacity='0.8';" 
+					onmouseout="this.style.opacity='1'"/>
+					<p:tooltip id="ttExpSearch" value="Search Results"/>
+					
+		</h:commandLink>    -->  
+		<!-- background: #00c081 !important; color:white; -->
+     <p:commandButton value="Search"  action="#{pieChartBean.onSubmit}"   style="align:left; "  >    
+     </p:commandButton>
+     
+     <p:commandButton value="Clear"  action="#{pieChartBean.onClear}"   style="align:left; "  >    
+     </p:commandButton>
+      
+   </p:panelGrid>
+   
+ 
+   
+   </p:panel>
+   
+   <h:messages layout="table" showSummary="true"  showDetail="true" globalOnly="false">
+   </h:messages>
+   
+   </h:form>
+   </f:view>
+   </h:body>
+   <!--  <h1 style="color: white;">Latest Deployment Summary </h1>
+  <h:form style="border: 1px solid #00c081; margin-top:5px;">
+    <h:body style="margin:50px;">   
+    
+    <h3 style="color: #00c081;" >Overall Summary of Symantec to McAfee Antivirus build on 20190321 </h3>
+    <p:panelGrid  columns="1"  columnClasses="label,value" style="align:right;border: 1px solid black;"> 
+        <p:chart type="pie"                 
+                 model="#{pieChartBean.model}" dataFormat="value" style="background-color: #00243e !important;">                 
+          </p:chart>
+           <p:panelGrid  columns="4"  columnClasses="label,value" style="align:right; border: 1px solid #00c081;"> 
+           <p:outputLabel value="Total End Points:#{pieChartBean.totalEndpoints}" style="color:white" />
+            <p:outputLabel value="Pass:#{pieChartBean.passed}" style="color:#00c081" />
+             <p:outputLabel value="Fail:#{pieChartBean.failed}" style="color:#ffff00" />
+              <p:outputLabel value="No Response:#{pieChartBean.noResp}" style="color:#ff002b" />
+   
+    </p:panelGrid>
+    </p:panelGrid>
+   
+</h:body>
+  </h:form>  -->
+  
+</html>

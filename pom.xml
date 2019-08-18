@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+    
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>poc</groupId>
+  <artifactId>Automation</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>war</packaging>
+  <name> store automation dashboard</name>
+  <description>store automation dashboard</description>
+  
+  <dependencies>
+    <dependency>
+        <groupId>org.primefaces</groupId>
+        <artifactId>primefaces</artifactId>
+        <version>6.1</version>
+    </dependency>
+    
+    <dependency>
+    <groupId>org.apache.poi</groupId>
+    <artifactId>poi</artifactId>
+    <version>3.7</version>
+   </dependency>
+   
+   
+    <dependency>
+    <groupId>com.jcraft</groupId>
+    <artifactId>jsch</artifactId>
+    <version>0.1.53</version>
+   </dependency> 
+   
+   <dependency>
+    <groupId>org.apache.commons</groupId>
+    <artifactId>commons-collections4</artifactId>
+    <version>4.0</version>
+    </dependency>
+    
+    <dependency>
+			<groupId>com.sun.el</groupId>
+			<artifactId>el-ri</artifactId>
+			<version>1.0</version>
+		</dependency>
+		
+		<dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>jstl</artifactId>
+			<version>1.2</version>
+		</dependency>
+		<dependency>
+    <groupId>org.jboss.el</groupId>
+    <artifactId>jboss-el</artifactId>
+    <version>2.0.1.GA</version>
+</dependency>
+<dependency>
+    <groupId>javax.servlet</groupId>
+    <artifactId>javax.servlet-api</artifactId>
+    <version>3.0.1</version>
+    <scope>provided</scope>
+</dependency>
+         <dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>jul-to-slf4j</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+ 
+		<!-- it help to get slf4j and log4j -->
+		<dependency>
+			<groupId>org.slf4j</groupId>
+			<artifactId>slf4j-log4j12</artifactId>
+			<version>1.7.7</version>
+		</dependency>
+		<!-- <dependency>
+			<groupId>javax.servlet</groupId>
+			<artifactId>servlet-api</artifactId>
+			<version>2.5</version>
+		</dependency> -->
+
+		<dependency>
+			<groupId>javax.servlet.jsp</groupId>
+			<artifactId>jsp-api</artifactId>
+			<version>2.1</version>
+		</dependency>
+		
+		<!-- <dependency>
+        <groupId>com.h2database</groupId>
+        <artifactId>h2</artifactId>
+        <version>1.4.196</version>
+    	</dependency> -->
+    	
+        <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-api</artifactId>
+            <version>2.2.14</version>
+        </dependency>
+       <dependency>
+            <groupId>com.sun.faces</groupId>
+            <artifactId>jsf-impl</artifactId>
+            <version>2.2.14</version>
+        </dependency>
+         <dependency>
+            <groupId>com.googlecode.json-simple</groupId>
+            <artifactId>json-simple</artifactId>
+            <version>1.1.1</version>
+        </dependency>
+	     <dependency>
+		  <groupId>com.fasterxml.jackson.core</groupId>
+		  <artifactId>jackson-core</artifactId>
+		  <version>LATEST</version>  
+		  </dependency>  
+		  <dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>LATEST</version>
+		  </dependency>
+  
+  <dependency>
+    <!-- Note: core-annotations version x.y.0 is generally compatible with
+         (identical to) version x.y.1, x.y.2, etc. -->
+    <groupId>com.fasterxml.jackson.core</groupId>
+    <artifactId>jackson-annotations</artifactId>
+    <version>LATEST</version>
+  </dependency>
+  
+        <dependency>
+		    <groupId>org.webjars</groupId>
+		    <artifactId>angularjs</artifactId>
+		    <version>1.5.4</version>
+		</dependency>		
+			<dependency>
+	      <groupId>org.webjars</groupId>
+	      <artifactId>jquery</artifactId>
+	      <version>2.1.1</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.webjars</groupId>
+	      <artifactId>jquery-ui</artifactId>
+	      <version>1.11.0</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.webjars</groupId>
+	      <artifactId>font-awesome</artifactId>
+	      <version>4.1.0</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.webjars</groupId>
+	      <artifactId>ionicons</artifactId>
+	      <version>1.5.2</version>
+	    </dependency>
+	    <dependency>
+	      <groupId>org.webjars</groupId>
+	      <artifactId>angular-ui-bootstrap</artifactId>
+	      <version>0.11.0-2</version>
+	    </dependency>
+	    
+	    <dependency>
+    <groupId>com.google.code.gson</groupId>
+    <artifactId>gson</artifactId>
+    <version>2.8.5</version>
+</dependency>
+    </dependencies>
+    <build>
+    <finalName>AutomationDeployment</finalName>
+        <plugins>
+            <plugin>
+                <groupId>org.apache.maven.plugins</groupId>
+                <artifactId>maven-war-plugin</artifactId>
+                <version>3.1.0</version>
+                <configuration>
+                    <failOnMissingWebXml>false</failOnMissingWebXml>
+                </configuration>
+            </plugin>
+            
+            <plugin>
+                <groupId>org.apache.tomcat.maven</groupId>
+                <artifactId>tomcat7-maven-plugin</artifactId>
+                <version>2.2</version>
+                <configuration>
+                <port>9090</port>
+                    <path>/AutomationDeployment</path>
+                </configuration>
+            </plugin>
+        </plugins>
+        
+    </build>
+   
+</project>

@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core">
+<h:head >    
+    <h:outputStylesheet library="css" name="style.css"  />
+    <style>
+    .ui-panel-content.ui-widget-content
+    {
+    width: 100%!important;
+    margin-top:5px;
+    border: 1px solid black;
+    font-size: 12px !important;
+	font-family: Arial !important;
+	background-color: red !important;
+	
+    }
+   
+    .mylist tr.ui-widget-content, .mylist tr.ui-datatable-odd, .mylist ui-datatable-odd {
+        background-color: #003258 !important;
+    }
+     .panelDataTable tr.ui-widget-content, .mylist tr.ui-datatable-odd, .mylist ui-datatable-odd {
+        background-color: #00243e !important;
+    }
+    .ui-paginator.ui-paginator-top.ui-widget-header.ui-corner-top{
+    background-color: #00243e !important;
+    color:white !important;
+    text-shadow:none !important;
+    }
+   .ui-paginator-page.ui-state-default.ui-state-active.ui-corner-all{
+   color:white !important;
+   text-shadow:none !important;
+   }
+   .ui-datatable * {
+     border-color : #00c081 !important;
+}
+.ui-dialog-titlebar.ui-widget-header.ui-helper-clearfix.ui-corner-top.ui-draggable-handle{
+ background-color: #00243e !important;
+ color:white !important;
+}
+.ui-icon.ui-icon-closethick{
+background-color: white !important;
+color:white !important
+}
+
+
+</style>
+</h:head>
+<h:body style="background-color: #003258 ;border-color : #00c081 !important">
+ 
+    <h:form id="forms">
+   <h:commandButton id="open" action="#{endPointsAttributes.download}" image="resources/images/images.jpg"
+			style="width:30px;height:30px;align:right; float:right; " onmouseover="this.style.opacity='0.5';" 
+			onmouseout="this.style.opacity='1';">
+			<p:tooltip id="toolTipFade" for="open" value="Export Data To Excel" position="top"/>
+		</h:commandButton>
+     <p:dataTable  var="endPoints" styleClass="mylist" rows="100" paginator="true" paginatorPosition="top" stickyHeader = "true" paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}" 
+        value="#{endPointsAttributes.mainAttributesList}"  style="margin-bottom:10px;font-size: 14px !important;font-family: Arial !important" >        
+        <p:column headerText="EndPoint"  style="text-align:center; color:white; background-color:#003258;text-shadow:none !important;" >
+        <p:commandLink   value="#{endPoints.endPoint}"  update=":forms:childTable" oncomplete="PF('ispDialog').show()" style="#{endPoints.status == 'Pass' ? 'color: #00c081' : 'color: #ff002b'}" >
+         <f:setPropertyActionListener target="#{endPointsAttributes.selectedAttribute}" value="#{endPoints}"/>
+        </p:commandLink>
+        </p:column>
+ 
+        <p:column headerText="Status"  style="text-align:center;color:white; background-color:#003258; text-shadow:none !important; " >
+            <h:outputText value="#{endPoints.status}" style="#{endPoints.status == 'Pass' ? 'color: #00c081' : 'color: #ff002b'}" />
+        </p:column>
+ 
+         <f:facet name="paginatorTopLeft">
+            <p:commandButton type="button" icon="pi pi-refresh" />
+        </f:facet>
+ 
+        <f:facet name="paginatorBottomRight">
+            <p:commandButton type="button" icon="pi pi-cloud-upload" />
+        </f:facet>
+        
+    </p:dataTable>
+    
+     <p:dialog header="Deployment Details" widgetVar="ispDialog" modal="true"  style="background-color: #003258 ;border-color : #00c081 !important;text-shadow:none !important;" resizable="false" > 
+     <div style="overflow: auto; border: 1px solid #ccc; height: 400px">  
+     
+     <p:dataTable styleClass="panelDataTable" id="childTable" var="ISPDetail"  value="#{endPointsAttributes.selectedAttribute.stateId}" style="font-size: 12px !important;font-family: Arial !important;" >
+      <p:column headerText="State Id" style="text-align:center;color:white; background-color:#003258;text-shadow:none !important;" >
+            <h:outputText value="#{ISPDetail.id}" style="#{ISPDetail.stateResult == 'true' ? 'color: #00c081' : 'color: #ff002b'}" />
+        </p:column>
+     <p:column headerText="Run Seq."  style="text-align:center;color:white; background-color:#003258;text-shadow:none !important;" >
+            <h:outputText value="#{ISPDetail.runNum}" style="#{ISPDetail.stateResult == 'true' ? 'color: #00c081' : 'color: #ff002b'}" />
+        </p:column>
+      <p:column headerText="Execution Time(in ms)"  style="text-align:center;color:white; background-color:#003258;text-shadow:none !important;" >
+            <h:outputText value="#{ISPDetail.duration}" style="#{ISPDetail.stateResult == 'true' ? 'color: #00c081' : 'color: #ff002b'}" />
+        </p:column>
+       <p:column headerText="Status"  style="text-align:center;color:white; background-color:#003258;text-shadow:none !important;" >
+            <h:outputText value="#{ISPDetail.stateResult}" style="#{ISPDetail.stateResult == 'true' ? 'color: #00c081' : 'color: #ff002b'}" />
+        </p:column> 
+        <p:column headerText="Comment"  style="text-align:center;color:white; background-color:#003258;text-shadow:none !important;" >
+            <h:outputText value="#{ISPDetail.comment}" style="#{ISPDetail.stateResult == 'true' ? 'color: #00c081' : 'color: #ff002b'}" />
+        </p:column> 
+        <p:column headerText="Details" id="Detail" style="text-align:center;color:white; background-color:#003258;text-shadow:none !important;" >
+        <h:outputText value="#{ISPDetail.changes}"  style="#{ISPDetail.stateResult == 'true' ? 'color: #00c081' : 'color: #ff002b'}" />    
+                   
+        </p:column>
+        
+        
+     </p:dataTable>
+     </div>
+     
+     
+     
+      <!-- <p:outputPanel id="ISPDetail" style="text-align:center;" >
+      <h:outputText  value="#{endPointsAttributes.selectedAttribute.endPoint}" style="font-weight:bold ; color:black;"/>
+        <p:panelGrid  columns="4"  columnClasses="label,value">   
+             
+        <h:outputText value="Salt State" style="font-weight:bold" />
+        <h:outputText value="Run Seq." style="font-weight:bold" />              
+         <h:outputText value ="Execution Time(in ms)" style="font-weight:bold" />
+         <h:outputText value ="Status" style="font-weight:bold" />
+         <p:repeat value="#{endPointsAttributes.selectedAttribute.stateId}" var="ep">
+          <h:outputText  value="#{ep.id} " />
+          </p:repeat>
+         </p:panelGrid>
+      </p:outputPanel> -->
+     </p:dialog>
+     
+     <!--  <p:dialog header="Details" widgetVar="stateDialog" modal="true" showEffect="blind" hideEffect="explode" resizable="false" >    
+      <p:outputPanel id="stateChanges" style="text-align:center;" > 
+      <h:outputText  value="#{endPointsAttributes.selectedStateId}" style="font-weight:bold ; color:black;"/>
+      <p:panelGrid  columns="1"  columnClasses="label,value">             
+        <h:outputText value="Changes" style="font-weight:bold" />
+         <h:outputText value="#{endPointsAttributes.selectedStateId.changes}"  />
+         </p:panelGrid>
+	   </p:outputPanel>
+	   </p:dialog> -->
+    
+    </h:form>
+   
+</h:body>
+   
+</html>

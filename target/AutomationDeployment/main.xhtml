@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+        "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://java.sun.com/jsf/html"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets" >
+<h:head >
+    <title  >Status on EndPoints </title>
+    <h:outputStylesheet library="css" name="style.css"  />
+    <style>
+    .ui-panel-content .ui-widget-content
+    {
+    width: 100%!important;
+    margin-top:5px;
+    border: 1px solid black;
+    }
+    </style>
+</h:head>
+<h:body>
+
+    <h:form id="form">
+       
+        <p:dataTable var="AV"
+                          value="#{endPointsAttributes.mainAttributesList}"                           
+                          rowKey="#{AV.status}"  
+                          scrollable="true" 
+                          rows="15"  
+                           paginator="true"
+                           paginatorTemplate="{CurrentPageReport} {FirstPageLink} {PreviousPageLink} {PageLinks} {NextPageLink} {LastPageLink} {RowsPerPageDropdown}"
+                 			rowsPerPageTemplate="5,10,15"
+                 			sortBy="#{AV.status}"
+                 			selectionMode="single"                 			
+                 			 resizableColumns="true" 
+                           
+                                
+                     >
+                     <!-- <p:ajax event="rowSelect" update=":form:ISPDetail" oncomplete="PF('ispDialog').show()" /> -->
+            <p:column headerText="EndPoint"  style="text-align:center" >
+            
+            <p:commandLink value="#{AV.endPoint}" oncomplete="PF('ispDialog').show()"
+                    update=":form:ISPDetail" style="#{AV.status == 'Pass' ? 'color: green' : 'color: red'}" >
+                    <f:setPropertyActionListener target="#{endPointsAttributes.selectedAttribute}"  value="#{AV}" />
+                </p:commandLink>
+               
+            </p:column>
+
+            <p:column headerText="Status"   sortBy="#{AV.status}" style="text-align:center" >
+                <h:outputText value="#{AV.status}" style="#{AV.status == 'Pass' ? 'color: green' : 'color: red'}"/>
+            </p:column>         
+        </p:dataTable>
+       
+        
+        
+        <p:dialog header="Deployment Details" widgetVar="ispDialog" modal="true" showEffect="fade" hideEffect="fade" resizable="false" >
+        
+        <p:outputPanel id="ISPDetail" style="text-align:center;" >
+        <h:outputText  value="#{endPointsAttributes.selectedAttribute.endPoint}" style="font-weight:bold ; color:black;"/>
+        <p:panelGrid  columns="4"  columnClasses="label,value">   
+             
+        <h:outputText value="Salt State" style="font-weight:bold" />
+        <h:outputText value="Run Seq." style="font-weight:bold" />              
+         <h:outputText value ="Execution Time(in ms)" style="font-weight:bold" />
+         <h:outputText value ="Status" style="font-weight:bold" />
+        
+      		
+  		 <h:outputText  value="#{endPointsAttributes.selectedAttribute.endPoint} " style="#{endPointsAttributes.selectedAttribute.stateId.stateResult == 'True' ? 'color: green' : 'color: red'}"/>  		
+         <h:outputText  value="#{endPointsAttributes.selectedAttribute.endPoint} " style="#{endPointsAttributes.selectedAttribute.stateId.stateResult == 'True' ? 'color: green' : 'color: red'}"/>                   
+         <h:outputText  value="#{endPointsAttributes.selectedAttribute.endPoint}" style="#{endPointsAttributes.selectedAttribute.stateId.stateResult == 'True' ? 'color: green' : 'color: red'}" />        
+         <h:outputText  value="#{endPointsAttributes.selectedAttribute.endPoint}" style="#{endPointsAttributes.selectedAttribute.stateId.stateResult == 'True' ? 'color: green' : 'color: red'}"/>
+        
+        
+		
+		
+		
+       
+        
+          </p:panelGrid>
+           
+           
+        
+        </p:outputPanel>
+        
+    </p:dialog>
+    </h:form>
+   
+</h:body>
+   
+</html>

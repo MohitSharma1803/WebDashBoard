@@ -1,0 +1,11 @@
+0:0:0:0:0:0:0:1 - - [16/Jul/2019:23:53:10 -0400] "GET /AutomationDeployment/ HTTP/1.1" 200 13262 http-bio-9090-exec-6 4437
+0:0:0:0:0:0:0:1 - - [16/Jul/2019:23:53:10 -0400] "GET /AutomationDeployment/faces/javax.faces.resource/theme.css?ln=primefaces-aristo HTTP/1.1" 304 - http-bio-9090-exec-6 11
+0:0:0:0:0:0:0:1 - - [16/Jul/2019:23:53:10 -0400] "GET /AutomationDeployment/faces/javax.faces.resource/components.css?ln=primefaces&v=6.1 HTTP/1.1" 304 - http-bio-9090-exec-6 4
+0:0:0:0:0:0:0:1 - - [16/Jul/2019:23:53:10 -0400] "GET /AutomationDeployment/faces/javax.faces.resource/jquery/jquery.js?ln=primefaces&v=6.1 HTTP/1.1" 304 - http-bio-9090-exec-6 22
+0:0:0:0:0:0:0:1 - - [16/Jul/2019:23:53:10 -0400] "GET /AutomationDeployment/faces/javax.faces.resource/autoDeployment.style.css?ln=css HTTP/1.1" 304 - http-bio-9090-exec-5 36
+0:0:0:0:0:0:0:1 - - [16/Jul/2019:23:53:10 -0400] "GET /AutomationDeployment/faces/javax.faces.resource/jquery/jquery-plugins.js?ln=primefaces&v=6.1 HTTP/1.1" 304 - http-bio-9090-exec-5 7
+0:0:0:0:0:0:0:1 - - [16/Jul/2019:23:53:10 -0400] "GET /AutomationDeployment/faces/javax.faces.resource/components.js?ln=primefaces&v=6.1 HTTP/1.1" 304 - http-bio-9090-exec-2 6
+0:0:0:0:0:0:0:1 - - [16/Jul/2019:23:53:10 -0400] "GET /AutomationDeployment/faces/javax.faces.resource/core.js?ln=primefaces&v=6.1 HTTP/1.1" 304 - http-bio-9090-exec-6 7
+0:0:0:0:0:0:0:1 - - [16/Jul/2019:23:53:10 -0400] "GET /AutomationDeployment/faces/javax.faces.resource/images/loblawLogoWhite.jpg HTTP/1.1" 304 - http-bio-9090-exec-2 2
+0:0:0:0:0:0:0:1 - - [16/Jul/2019:23:53:11 -0400] "GET /AutomationDeployment/resources/images/bgheaderRed.jpg HTTP/1.1" 404 1057 http-bio-9090-exec-2 10
+0:0:0:0:0:0:0:1 - - [16/Jul/2019:23:53:11 -0400] "GET /AutomationDeployment/faces/javax.faces.resource/images/ui-icons_38667f_256x240.png?ln=primefaces-aristo HTTP/1.1" 304 - http-bio-9090-exec-6 7

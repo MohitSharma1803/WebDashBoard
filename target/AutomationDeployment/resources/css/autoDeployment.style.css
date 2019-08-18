@@ -1,0 +1,461 @@
+@font-face {
+	font-family: 'RieslingRegular';	
+	src:url('#{facesContext.externalContext.requestContextPath}/resources/font/riesling.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'AmbleRegular';	
+	src:url('#{facesContext.externalContext.requestContextPath}/resources/font/Amble-Regular.ttf') format('truetype');
+}
+
+@font-face {
+	font-family: 'dinova';	
+	src:url('#{facesContext.externalContext.requestContextPath}/resources/font/DINOVA.TTF') format('truetype');
+}
+
+body {
+	background: #003258;
+	margin: 0px;
+	padding: 0px;
+	font-size: 15px !important;
+	font-family: Arial !important;
+	font-weight: normal;
+	
+}
+
+p,span,div,tr,td,li,ul {
+	margin: 0px;
+	padding: 0px;
+	font-size: 12px !important;
+	font-family: Arial !important;
+	color: #363535;
+	font-weight: bold;
+}
+
+input {
+	padding-left: 4px;
+	height: 16px;
+	font-size: 12px !important;
+	font-family: Arial !important;
+	font-weight: normal;
+}
+
+input[type="reset"],input[type="submit"],input[type="button"] {
+	height: 20px;
+	padding-left: 12px;
+	padding-right: 12px;
+	background-color: #264368;
+	font-size: 12px !important;
+	font-family: Arial !important;
+	font-weight: normal;
+}
+
+.mainTheme {
+	background:
+		url('#{facesContext.externalContext.requestContextPath}/resources/images/bgheaderRed.jpg')
+		repeat-x #00243e;
+}
+
+.footerTheme {
+	background:
+		url('#{facesContext.externalContext.requestContextPath}/resources/images/bgheaderRed.jpg')
+		repeat-x #00243e;
+  position:absolute;
+  bottom:0px;
+}
+
+.skuHeader {
+  font-size: 20px;
+  font-family: 'dinova';
+  position:relative;
+  background: -webkit-linear-gradient(#142BB3,#8F9CE3);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.skuTopBanner {
+	height: 50px;
+	position: relative;
+}
+
+.skuTopBanner ul {
+	list-style-type: none;
+}
+
+.skuTopBanner ul li {
+	float: left
+}
+
+.skuTopBanner ul li.staplesLogo {
+	margin: -1px 0px 0px 0px;
+}
+
+.skuTopBanner ul li.themeLogo {
+	margin: -1px 537px 0px 0px;
+}
+
+.skuRepWrapper {
+	height: 750px;
+	width: 900px;
+	position: relative;
+	margin: 0 auto;
+}
+
+.skuThemeContainer {
+	margin: 58px 0px 0px 0px;
+	position: relative;
+	width: 900px;
+	height: 389px;
+	top: 0px;
+	left: 0px;
+	background:
+		url('#{facesContext.externalContext.requestContextPath}/resources/images/themeimg.jpg')
+		no-repeat;
+}
+
+.formContainer {
+	position: absolute;
+	padding: 10px 0px 0px 30px;
+	top: 0px;
+	right: 50px;
+	width: 405px;
+	height: 326px;
+	background:
+		url('#{facesContext.externalContext.requestContextPath}/resources/images/formbg.png')
+		no-repeat;
+}
+
+table.loginform {
+	width: 336px;
+}
+
+.loginTextBox {
+	border: none;
+	width: 337px;
+	height: 54px;
+	padding: 0px 0px 0px 10px;
+	font-size: 18px;
+	color: #2c75d0;
+	background:
+		url('#{facesContext.externalContext.requestContextPath}/resources/images/textboxbg.png')
+		no-repeat;
+}
+
+.blueLabel {
+	font-size: 18px;
+	color: #2c75d0;
+	padding-top: 10px;
+	padding-bottom: 10px;
+}
+
+#loginForm-loginBt {
+	background:
+		url(#{facesContext.externalContext.requestContextPath}/resources/images/loginbt.png)
+		no-repeat;
+	width: 191px;
+	height: 58px;
+	color: #ffffff;
+	font-size: 18px;
+	border: none;
+	padding: 2px 5px 5px 5px;
+}
+
+.footerText {
+	padding-right:6px;
+}
+
+.taxonomyPanel {
+	height: 650px;
+	overflow: auto !important;
+	vertical-align: top;
+	width: 300px;
+}
+
+.taxReviewClassPanel {
+	height: 730px;
+	overflow: auto !important;
+}
+
+.rf-p-b taxReviewClassPanel {
+	padding: 0 !important;
+}
+
+#taxReviewPanelForm-taxReviewClassDataTable {
+	width: 870px;
+}
+
+#pageName {
+	color: #5987BC;
+	font-family: arial;
+	font-size: 20px;
+	font-weight: bold;
+}
+
+#infoMsg,#user,#lastLogin {
+	color: Green;
+	font-family: arial;
+	font-size: 14px;
+}
+
+#errorMsg {
+	color: #D63D1E;
+	font-family: arial;
+	font-size: 14px;
+}
+
+.taxReviewFlagColumn {
+	width: 20%;
+	align: center;
+}
+
+.taxReviewClassColumn {
+	width: 80%;
+}
+
+.productViewPage {
+	vertical-align: top;
+	align: left;
+	padding-left: 6px;
+	padding-right: 6px;
+}
+
+.col1 {
+	text-align:left;
+}
+
+.col2 {
+	text-align: right;
+	align: right;
+}
+
+
+.alignCenter {
+	text-align: center;
+}
+
+.richTabStyle {
+	border-color: black !important;
+}
+
+.rf-tab-hdr-inact.rf-tab-hdr-top {
+	font-size: 50px !important;
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+	padding-top: 5px !important;
+	border-top-left-radius: 10px 10px;
+	border-top-right-radius: 10px 10px;
+}
+
+.rf-tab-hdr-act.rf-tab-hdr-top {
+	font-size: 50px !important;
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+	padding-top: 5px !important;
+	border-top-left-radius: 10px 10px;
+	border-top-right-radius: 10px 10px;
+}
+
+.rich-tabhdr-cell-active {
+	font-weight: bold !important;
+	padding-left: 20px !important;
+	padding-right: 20px !important;
+	padding-top: 5px !important;
+	border-top-left-radius: 10px 10px;
+	border-top-right-radius: 10px 10px;
+}
+
+.rich-tabpanel-content {
+	border-width: 1px 1px 1px 1px !important;
+	background-color: transparent !important;
+	border-color: black !important;
+}
+
+.rf-tab-hdr-spcr {
+	width: 1px !important;
+}
+
+.rf-tab-hdr-tabline-vis.rf-tab-hdr-tabline-top {
+	border-style: none !important;
+	background: none !important;
+	width: 98% !important;
+	border: none !important;
+}
+
+.rf-tab-cnt {
+	height: 400px !important;
+	width: 98% !important;
+	background-color: transparent !important;
+	border: 2px solid #C0C0C0 !important;
+}
+
+.rich-tab-bottom-line {
+	border-style: none !important;
+}
+
+.rf-tab-hdr-brd {
+	border-style: none !important;
+}
+
+.rf-sel-btn-arrow {
+	width: 20px !important;
+	height: 18px !important;
+}
+
+
+.ui-tree {
+	background: transparent !important;
+	border: 0 !important;
+}
+
+.rf-p {
+	background-color: #C1D5EF !important;
+}
+
+.rf-dt-r{
+	height: 5px !important;
+}
+
+.rf-p-b {
+	background-color: #C1D5EF !important;
+}
+
+.rf-dt {
+	text-align: center !important;
+}
+
+.rf-cal-inp{
+width: 80px !important;
+margin-left: 2px !important;
+}
+
+::-webkit-scrollbar {
+    width: 8px;
+    height:8px;
+}
+ 
+::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.6); 
+    border-radius: 5px;
+}
+ 
+::-webkit-scrollbar-thumb {
+    border-radius: 5px;
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.6); 
+}
+::-webkit-scrollbar-corner{ 
+	color:white;
+}
+::-webkit-scrollbar-button {
+}
+
+.colLeft{	
+	font-weight:bold;
+	#background:
+		url('#{facesContext.externalContext.requestContextPath}/resources/images/buttonHoverBackgroundImage.png')
+		repeat-x #C1D5EF;
+	#background-repeat: repeat-y;
+	padding: 4px 4px 4px 4px;	
+	text-align: left !important;
+}
+.colRight{
+	
+	#background:
+		url('#{facesContext.externalContext.requestContextPath}/resources/images/buttonHoverBackgroundImage.png')
+		repeat-x #C1D5EF;
+	#background-repeat: repeat-y;
+	padding: 4px 4px 4px 4px;
+	text-align: left !important;
+	min-width:100px;
+}
+.tableHeader{
+	font-family: Arial;
+	color:white;
+	font-size:12px;
+	font-weight:bold;
+	background-color:blue;
+	background:
+		url('#{facesContext.externalContext.requestContextPath}/resources/images/colHdrGrad.png')
+		repeat-x #C1D5EF;
+	#background-image: -moz-linear-gradient(#634EED, #cde6f9); /* Firefox */
+	#background-image: -webkit-linear-gradient(#634EED, #cde6f9); /* Webkit */
+	#background-repeat: repeat-y repeat-y;
+	#border-top-left-radius: 10px 10px;
+	#border-top-right-radius: 10px 10px;
+	
+}
+
+.paddingcol2 {
+	text-align: right;
+	padding-right: 7px;
+}
+.col3 {
+	text-align:left;
+	padding-left:40px;
+}
+.prdSearchMessage {
+	text-align: center;
+	width:40%;
+}
+.prdSearch {
+	text-align: left;
+	width:30%;
+}
+.prdExport {
+	text-align: right;
+	width:30%;
+}
+
+#prodSearchForm-prdSearchFormMsgs span{
+text-align: center;
+}
+.textBox{
+background-color:#C1D5EF !important;
+background-image:none!important;
+border-color:#292627 !important;
+
+}
+
+.ui-widget-content{
+	background-color: #00243e ;
+	
+}
+.ui-panelgrid>*>tr,
+.ui-panelgrid>*>tr>td {
+    border: none;
+}
+
+/* .ui-panelgrid.ui-widget.searchPanel{
+	border: none!important;
+} */
+
+.dt1 {
+	text-align:left;
+	padding-left:40px;
+	background-color: #00243e ;
+	border: none;
+}
+
+td.ui-panelgrid-cell {
+	text-align:left;
+	padding-left:40px;
+	background-color: #00243e ;
+	
+}
+
+/* span.ui-button-text.ui-c {	
+	color:white;
+	border: none;
+	font-size: 20px !important;
+	font-family: Arial !important;
+	font-weight: normal;
+} */
+
+
+.ui-widget {
+    font-size: 12px !important;
+}
+
+
+.ui-datatable.ui-widget{
+	font-size: 12px !important;
+}
